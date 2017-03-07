@@ -8,7 +8,16 @@ const DatabaseLinks = require('docker-links').parseLinks(process.env);
 
 console.log("DatabaseLinks: ", DatabaseLinks);
 
-const API = 'http://' + DatabaseLinks.api.hostname + ':' + DatabaseLinks.api.port;
+if(DatabaseLinks.hasOwnProperty('api')) {
+
+  var API = 'http://' + DatabaseLinks.api.hostname + ':' + DatabaseLinks.api.port;
+
+} else {
+
+  var API = 'http://localhost:8107'
+
+}
+
 
 console.log("API: ", API);
 
