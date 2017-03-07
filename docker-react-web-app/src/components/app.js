@@ -27,15 +27,12 @@ class App extends React.Component {
 				<NavBar/>
 
 			    <div id="map-container" className="map-area">
-					<div id="image-container" className="map-area">
-						<MapImage/>   
-					</div>
-					<div id="region-container" className="map-area">
-						<RegionMap/>
-					</div>
-					<div id="planet-shapes-container" className="map-area">
-						<StarMap/>
-					</div>
+			    
+					<MapImage/>   
+					
+					<RegionMap/>
+
+					<StarMap/>
 
 					<Grid width={width} height={height} />
 
@@ -58,7 +55,9 @@ class App extends React.Component {
 						</div>
 					</div>
 					</div>
+
 					<SystemDisplay/>
+
 			    </div>
 		    </div>
         );

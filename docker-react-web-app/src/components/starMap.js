@@ -18,7 +18,7 @@ class StarMap extends React.Component {
   	console.log("props.stars: ", this.props);
 
     return (
-    	<div className={this.props.stars ? '' : 'hidden'}>
+    	<div id="planet-shapes-container" className={this.props.stars ? 'map-area' : 'map-area hidden'}>
     		<svg id="map-svg" width={1200} height={1200}>
 				{generateStarMap()}
     		</svg>

@@ -12,7 +12,7 @@ class RegionMap extends React.Component {
   	console.log("props.regions: ", this.props);
 
     return (
-    	<div className={this.props.regions ? '' : 'hidden'}>{generateRegions()}</div>
+    	<div id="region-container" className={this.props.regions ? 'map-area' : 'map-area hidden'}>{generateRegions()}</div>
     );
   }
 }

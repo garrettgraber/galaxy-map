@@ -11,8 +11,7 @@ class MapImage extends React.Component {
   	  	console.log("props.map: ", this.props);
 
     return (
-
-    	<div className={this.props.map ? '' : 'hidden'}>
+    	<div id="image-container" className={this.props.map ? 'map-area' : 'map-area + hidden'}>
       		<img className='map-image' height="1200" width="1200" src={galaxy} alt={"galaxy"} />
       	</div>
     );
