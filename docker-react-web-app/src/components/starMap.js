@@ -11,6 +11,28 @@ console.log("StarSystem: ", StarSystem);
 class StarMap extends React.Component {
   constructor() {
     super();
+    this.state = {starData: []};
+  }
+
+  componentDidMount() {
+
+  	console.log("Star componentDidMount: ", this);
+
+	$.ajax({
+		url: "api/has-location",
+		dataType: 'json',
+		cache: true,
+		success: function(data) {
+
+			console.log("starData: ", data);		
+	  		this.setState({starData: data});
+
+	}.bind(this),
+
+		error: function(xhr, status, err) {
+
+		}.bind(this)
+	});
   }
 
   render() {
@@ -18,28 +40,30 @@ class StarMap extends React.Component {
   	console.log("props.stars: ", this.props);
 
     return (
-    	<div id="planet-shapes-container" className={this.props.stars ? 'map-area' : 'map-area hidden'}>
-    		<svg id="map-svg" width={1200} height={1200}>
-				{generateStarMap()}
-    		</svg>
-    	</div>
+    	generateStarMap(this.props.stars, this.props.zoomLevel)
     );
   }
 }
 
+
+// <div id="planet-shapes-container" className={this.props.stars ? 'map-area' : 'map-area hidden'}>
+// 	<svg id="map-svg" width={1200} height={1200}>
+// 	</svg>
+// </div>
+
 // <svg id="map-svg" width={1200} height={1200}></svg>
 
-const generateStarMap = () => {
+const generateStarMap = (starStatus, zoomLevel) => {
 
-	var starsArray = [];
+	// var starsArray = [];
 
-	// var starMapElement = ReactFauxDOM.createElement('svg');
+	var starMapGalaxyElement = ReactFauxDOM.createElement('g');
 
-	// d3.select(starMapElement)
-	// 	.attr("id", "map-svg")
-	//     .attr("width", 1200)
-	//     .attr("height", 1200);
-
+	d3.select(starMapGalaxyElement)
+		.attr("id", "map-svg")
+	    .attr("width", 1200)
+	    .attr("height", 1200)
+	    .attr("class", starStatus ? 'map-area' : 'map-area hidden');
 
 	for(var i=0; i < coordinateArray.length; i++) {
 
@@ -55,13 +79,16 @@ const generateStarMap = () => {
 		// starMapElement.appendChild(starSystemElement)
 		// starMapElement.appendChild(starSystemTextElement)
 
-		starsArray.push(<StarSystem  x={CurrentLocation.x}  y={CurrentLocation.y}  name={CurrentSystem.name} xText={CurrentLocation.xText} yText={CurrentLocation.yText} />);
+		// starsArray.push(<StarSystem  x={CurrentLocation.x}  y={CurrentLocation.y}  name={CurrentSystem.name} xText={CurrentLocation.xText} yText={CurrentLocation.yText} />);
+
+		starMapGalaxyElement.appendChild(<StarSystem  x={CurrentLocation.x}  y={CurrentLocation.y}  name={CurrentSystem.name} xText={CurrentLocation.xText} yText={CurrentLocation.yText} zoomLevel={zoomLevel}/>);
 
 
 
 	}
 
-	return starsArray;
+	return starMapGalaxyElement.toReact();
+
 };
 
 
@@ -153,6 +180,17 @@ function sectorToGalacticCoordinates(SystemObject) {
 			y: yValueTemp
 		};
 	}
+};
+
+
+function getStarData(cb) {
+
+  $.get("api/has-location", (error, data) => {
+
+    cb(error, data);
+
+  });
+
 };
 
 

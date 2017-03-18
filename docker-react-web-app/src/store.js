@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux';
-import { grid, regions, stars, map, population, currentSystems, systems, counter } from './reducers/navigationReducers.js';
+import { grid, regions, stars, map, population, currentSystems, starDisplay, systems, counter } from './reducers/navigationReducers.js';
 
 
 let storeTest = createStore(counter);
@@ -23,6 +23,6 @@ storeTest.dispatch({ type: 'DECREMENT' })
 console.log( (storeTest.getState() === 1)? "redux on" : "redux off" );
 
 
-const rootReducer = combineReducers({grid, regions, stars, map, population, currentSystems, systems});
+const rootReducer = combineReducers({grid, regions, stars, map, population, currentSystems, starDisplay, systems});
 
 export const store = createStore(rootReducer);

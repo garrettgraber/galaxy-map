@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import SearchData from './searchData.js';
 
 
 class NavBar extends React.Component {
@@ -51,9 +52,7 @@ class NavBar extends React.Component {
             <div id="nav-container">
             	<div className="nav-section">
     		   		<button id="total-planets" type="button" className="btn btn-primary navbar-button" >Total Planets</button>
-                    <button id="search-system" type="button" className="btn btn-primary navbar-button" style={  {marginRight: 10} }>Planet Search&nbsp;&nbsp;</button>
-    		    	
-    		    	<input id="search-system-input" type="text" />
+                    <SearchData/>
                 </div>
                 <div className="nav-section">
                     <span style={ {color: "#49fb35"} }>MAP CONTROLS:&nbsp;&nbsp;</span>
@@ -69,6 +68,11 @@ class NavBar extends React.Component {
         );
     }
 }
+
+
+// <button id="search-system" type="button" className="btn btn-primary navbar-button" style={  {marginRight: 10} }>Planet Search&nbsp;&nbsp;</button>
+                    
+//                     <input id="search-system-input" type="text" />
 
 
 function buttonOn(buttonStatus) {

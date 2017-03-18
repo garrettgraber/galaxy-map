@@ -39,15 +39,15 @@ class StarSystem extends React.Component {
 
   render() {
 
-  	// console.log("props.starSystem: ", this.props);
+  	console.log("props.starSystem: ", this.props);
 
   	// var CurrentLocation = galacticToMapCoordinate(this.props.x, this.props.y);
 
     return (
     	<svg onClick={(e) => this.starClick(e)} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}  onMouseLeave={(e) => this.onMouseLeave(e)} >
     		<g>
-	    		<text x={this.props.xText} y={this.props.yText}  style={ {fontSize: "11px", fill: "red"} }>{this.props.name}</text>
-	    		<circle style={ {stroke: "black", fill: "red"} } r={2} className={"star-circle"} cx={this.props.x}  cy={this.props.y} />
+	    		<text x={this.props.xText} y={this.props.yText}  style={ {fontSize: textSize(this.props.zoomLevel), fill: "red"} }>{this.props.name}</text>
+	    		<circle style={ {fill: "red"} } r={starRadius(this.props.zoomLevel)} className={"star-circle"} cx={this.props.x}  cy={this.props.y} />
 	    	</g>
 	   	</svg>
     );
@@ -113,6 +113,81 @@ function sectorToGalacticCoordinates(SystemObject) {
 		};
 	}
 };
+
+
+
+
+function starRadius(zoomValue) {
+
+	if(1.0 <= zoomValue && zoomValue <= 5.0) {
+
+		console.log("zoomValue: ", zoomValue);
+		var newRadius = 2.0 - ((zoomValue - 1) * 0.25);
+
+	} else if (5.0 < zoomValue && zoomValue <= 10.0) {
+
+		console.log("zoomValue: ", zoomValue);
+		var newRadius = 1.0 - ((zoomValue - 5.0) / 10.0);
+
+	} else if (10.0 < zoomValue && zoomValue <= 20.0) {
+
+		console.log("zoomValue: ", zoomValue);
+
+		var newRadius = 0.5 - ((zoomValue - 10.0) / 40.0);
+
+	} else if (zoomValue > 20.0) {
+
+		console.log("zoomValue: ", zoomValue);
+
+		var newRadius = 0.25;
+
+	}
+
+	return newRadius;
+}
+
+
+
+function textSize(zoomValue) {
+
+	if(1.0 <= zoomValue && zoomValue <= 2.0) {
+
+		var newTextSize = 11 - ((zoomValue - 1.0) * 3);
+
+	} else if(2.0 < zoomValue && zoomValue <= 3.0) {
+
+		var newTextSize = 8 - ((zoomValue - 2.0) * 2);
+
+	} else if(3.0 < zoomValue && zoomValue <= 4.0) {
+
+		var newTextSize = 6 - ((zoomValue - 3.0) * 1);
+
+	} else if(4.0 < zoomValue && zoomValue <= 5.0) {
+
+		var newTextSize = 5 - ((zoomValue - 4.0) * 0.5)
+
+	} else if(5.0 < zoomValue && zoomValue <= 7.5) {
+
+		var newTextSize = 4.5 - ((zoomValue - 5.0) * 0.5);
+
+	} else if(7.5 < zoomValue && zoomValue <= 10.0) {
+
+		var newTextSize = 3.25 - ((zoomValue - 7.5) * 0.5);
+
+	} else if(10.0 < zoomValue && zoomValue <= 20.0) {
+
+		var newTextSize = 2.0 - ((zoomValue - 10.0) * 0.1);
+
+	} else if(zoomValue > 20.0) {
+
+		var newTextSize = 1.0;
+
+	}
+
+	return newTextSize.toString() + "px";
+}
+
+
 
 
 const mapStateToProps = (state = {}) => {

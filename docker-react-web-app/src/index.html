@@ -40,6 +40,7 @@
 
     .map-area {
       position: absolute;
+      transform: scale(1.0);
       left: 0px;
       height: 1200px;
       width: 1200px;
@@ -107,10 +108,14 @@
     }
 
     .image-control-pane {
-      width: 65px;
+      width: 100px;
       height: 1200px;
       position: fixed;
       background-color: black;
+      right: 0;
+      position: fixed;
+      z-index: 2;
+      top: 100px;
     }
 
     .image-control-pane-right {
@@ -143,6 +148,10 @@
       z-index: 1;
       top: 100px;
       background-color: black;
+      position: absolute;
+      left: -65px;
+      height: 1200px;
+      width: 1200px;
     }
 
     #image-container {
@@ -154,6 +163,7 @@
     #image-control {
       height: 1200px;
       width: 1200px;
+      right: 0;
     }
 
     #planet-data-container {
@@ -170,6 +180,8 @@
       width: 70%;
     }
 
+
+
     #close-coordinate-display {
       position: relative;
       float: right;
@@ -179,10 +191,10 @@
     #planet-data {
       display: none;
       top: 90px;
-      left: 120px;
+      left: 50px;
       background-color: black;
       opacity: 1.0;
-      height: 480px;
+      height: 520px;
       /*padding: 5px;*/
       position: fixed;
       margin-left: 6px;
@@ -192,6 +204,26 @@
       /*border-radius: 10px;*/
       width: 300px;
       overflow-y: scroll;
+    }
+
+    #star-display {
+      display: none;
+      top: 90px;
+      left: 380px;
+      background-color: black;
+      opacity: 1.0;
+      height: 520px;
+      width: 620px;
+      /*padding: 5px;*/
+      position: fixed;
+      margin-left: 6px;
+      margin-top: 20px;
+      margin-bottom: 6px;
+      border: 2px solid white;
+      /*border-radius: 10px;*/
+      /*overflow-y: scroll;*/
+
+
     }
 
   </style>

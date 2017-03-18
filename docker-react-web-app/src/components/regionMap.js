@@ -12,20 +12,25 @@ class RegionMap extends React.Component {
   	console.log("props.regions: ", this.props);
 
     return (
-    	<div id="region-container" className={this.props.regions ? 'map-area' : 'map-area hidden'}>{generateRegions()}</div>
+    	generateRegions(this.props.regions)
     );
   }
 }
 
 
-function generateRegions() {
 
-	var regionMapGalaxyElement = ReactFauxDOM.createElement('svg');
+
+function generateRegions(regionsStatus) {
+
+	var regionMapGalaxyElement = ReactFauxDOM.createElement('g');
+
 
 	d3.select(regionMapGalaxyElement)
-		.attr("id", "")
+		.attr("id", "region-container")
+		.attr("class", (regionsStatus) ? 'map-area' : 'map-area hidden')
 	    .attr("width", 1200)
 	    .attr("height", 1200);
+
 
 
 	var coloniesRegionElement = createGalacticCoreRegion(132 + 2, "#6495ED");
@@ -56,6 +61,8 @@ function createGalacticCoreRegion(distanceFromCore, fillColor) {
 	return regionMapElement;
 };
 
+
+// <div id="region-container" className={this.props.regions ? 'map-area' : 'map-area hidden'}>{generateRegions()}</div>
 
 const mapStateToProps = (state = {}) => {
     return Object.assign({}, state);

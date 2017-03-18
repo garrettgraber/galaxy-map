@@ -141,6 +141,8 @@ class Grid extends React.Component {
 
   render() {
 
+  	console.log("props.grid: ", this.props);
+
   	var gridStyle = {};
   	var gridOverallStyle = "map-area";
 
@@ -149,10 +151,8 @@ class Grid extends React.Component {
   	}
 
     return (
-		<div id='grid' className={gridOverallStyle}>
-			<svg  id="grid-component" className="map-area"  width={this.props.width} height={this.props.height} style={gridStyle}>{generateGridCell(this.props.population, this.state.populatedCoordinates)}
-			</svg>
-	    </div>
+		<svg id="grid-component" className={gridOverallStyle}  width={this.props.width} height={this.props.height} style={gridStyle}>{generateGridCell(this.props.population, this.state.populatedCoordinates)}
+		</svg>
     );
   }
 }

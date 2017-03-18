@@ -4,8 +4,6 @@ import React from 'react';
 import ReactFauxDOM from 'react-faux-dom';
 import { connect } from 'react-redux';
 
-import DataButton from './dataButton.js';
-
 
 
 var DataButtonMouseover = {
@@ -20,7 +18,7 @@ var DataButtonMouseover = {
 };
 
 
-class DataController extends React.Component {
+class DataButton extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -75,16 +73,12 @@ class DataController extends React.Component {
 
   	console.log("data clicked: ", e);
 
-    this.props.dispatch({ type: 'SYSTEMS_TOGGLE'});
+    this.props.dispatch(this.props.buttonAction);
 
 
 
   }
 
-  starMapClick(e) {
-
-    console.log("Star map Clicked!");
-  }
 
   render() {
 
@@ -102,30 +96,19 @@ class DataController extends React.Component {
 
   	// var CurrentLocation = galacticToMapCoordinate(this.props.x, this.props.y);
 
-    return (
-      <div className="image-control-pane">
-        <svg width={200} height={1200}>
-          <DataButton x={0} y={0} buttonAction={{ type: 'SYSTEMS_TOGGLE'}} buttonName={"DATA VIEW"}/>
-          <DataButton x={0} y={48} buttonAction={{ type: 'STARS_DISPLAY_TOGGLE'}} buttonName={"STAR CLOSE UP VIEW"}/>
-        </svg>
-      </div>
+    return (  
+      <g>  
+        <rect onClick={(e) => this.dataClick(e)} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}  onMouseLeave={(e) => this.onMouseLeave(e)} x={this.props.x} y={this.props.y} width={200} height={48} style={DataButtonStyle}></rect>
+
+        <text  onClick={(e) => this.dataClick(e)} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}  onMouseLeave={(e) => this.onMouseLeave(e)}  x={this.props.x + 12} y={this.props.y + 30} height={20} width={40} style={DataButtonTextStyle}>{this.props.buttonName}</text>
+      </g>
     );
   }
 }
 
 
-
-  
-          // <rect onClick={(e) => this.dataClick(e)} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}  onMouseLeave={(e) => this.onMouseLeave(e)} x={0} y={0} width={200} height={48} style={DataButtonStyle}></rect>
-
-          // <text  onClick={(e) => this.dataClick(e)} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}  onMouseLeave={(e) => this.onMouseLeave(e)}  x={12} y={30} height={20} width={40} style={DataButtonTextStyle}> DATA </text>
-
-          // <rect onClick={(e) => this.starMapClick(e)} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}  onMouseLeave={(e) => this.onMouseLeave(e)} x={0} y={48} width={200} height={48} style={DataButtonStyle}></rect>
-
-          // <text  onClick={(e) => this.starMapClick(e)} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}  onMouseLeave={(e) => this.onMouseLeave(e)}  x={2} y={78} height={20} width={40} style={DataButtonTextStyle}> STAR MAP </text>
-
 const mapStateToProps = (state = {}) => {
     return Object.assign({}, state);
 };
 
-export default connect(mapStateToProps)(DataController);
+export default connect(mapStateToProps)(DataButton);

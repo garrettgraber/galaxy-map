@@ -136,3 +136,24 @@ export function systems(state = false, action) {
     }   
 
 }
+
+export function starDisplay(state = false, action) {
+    console.log("star display state: ", state);
+    if (typeof state === 'undefined') {
+        state = false; // default state
+    }
+    switch (action.type) {
+        case 'STARS_DISPLAY_ON':
+            console.log("star display state: ", state);
+            return  true;
+        case 'STARS_DISPLAY_OFF':
+            console.log("star display state: ", state);
+            return false;
+        case 'STARS_DISPLAY_TOGGLE':
+            console.log("star display state: ", state);
+            return (state) ? false : true;
+        default:
+            return state;
+    }   
+
+}

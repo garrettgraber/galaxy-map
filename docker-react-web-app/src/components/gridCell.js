@@ -133,6 +133,7 @@ class GridCell extends React.Component {
 
         this.props.dispatch({ type: 'SYSTEMS_ON'});
         this.props.dispatch({ type: 'DISPLAY_SYSTEMS', payload: result });
+        this.props.dispatch({ type: 'STARS_DISPLAY_ON'});
 
         console.log("this.props: ", this.props);
 
@@ -238,9 +239,7 @@ class GridCell extends React.Component {
       <svg onClick={(e) => this.gridClick(e)} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}  onMouseLeave={(e) => this.onMouseLeave(e)} >
         <g>
           <rect style={GridCellStyle}  x={this.props.x} y={this.props.y} height={this.props.height} width={this.props.width} onMouseEnter={(e) => this.onMouseEnter(e)} >
-
           </rect>
-
           <text className="grid-text" style={textStyle}  x={this.props.xText} y={this.props.yText} height={this.props.heightText} width={this.props.widthText}>{this.props.text}</text>
         </g>
       </svg>

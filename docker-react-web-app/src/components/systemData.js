@@ -32,11 +32,11 @@ class SystemData extends React.Component {
     
   }
 
-  wookiepeidiaLinkSector(sectorString) {
+  wookiepeidiaLinkSector(sectorArray) {
 
-    console.log("sectorString: ", sectorString);
+    console.log("sectorArray: ", sectorArray);
 
-    var sectorArray = sectorString.split(',');
+    
     var sectorLinksArray = [];
 
     for(var i=0; i < sectorArray.length; i++) {
