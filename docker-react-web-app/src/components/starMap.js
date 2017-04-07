@@ -6,17 +6,17 @@ import StarSystem from './starSystem.js';
 
 import {coordinateArray} from '../data/stellarCoordinates.js'
 
-console.log("StarSystem: ", StarSystem);
+// console.log("StarSystem: ", StarSystem);
 
 class StarMap extends React.Component {
   constructor() {
     super();
-    this.state = {starData: []};
+    this.state = {starData: coordinateArray};
   }
 
   componentDidMount() {
 
-  	console.log("Star componentDidMount: ", this);
+  	// console.log("Star componentDidMount: ", this);
 
 	$.ajax({
 		url: "api/has-location",
@@ -37,10 +37,10 @@ class StarMap extends React.Component {
 
   render() {
 
-  	console.log("props.stars: ", this.props);
+  	console.log("props.stars: ", this.props.stars);
 
     return (
-    	generateStarMap(this.props.stars, this.props.zoomLevel)
+    	generateStarMap(this.props.stars, this.props.zoomLevel, this.state.starData)
     );
   }
 }
@@ -53,11 +53,12 @@ class StarMap extends React.Component {
 
 // <svg id="map-svg" width={1200} height={1200}></svg>
 
-const generateStarMap = (starStatus, zoomLevel) => {
+const generateStarMap = (starStatus, zoomLevel, starData) => {
 
 	// var starsArray = [];
+	console.log("Total stars: ", starData.length);
 
-	var starMapGalaxyElement = ReactFauxDOM.createElement('g');
+	var starMapGalaxyElement = ReactFauxDOM.createElement('svg');
 
 	d3.select(starMapGalaxyElement)
 		.attr("id", "map-svg")
@@ -65,10 +66,23 @@ const generateStarMap = (starStatus, zoomLevel) => {
 	    .attr("height", 1200)
 	    .attr("class", starStatus ? 'map-area' : 'map-area hidden');
 
-	for(var i=0; i < coordinateArray.length; i++) {
+	for(var i=0; i < starData.length; i++) {
 
-		var CurrentSystem = coordinateArray[i];
-		var CurrentLocation = galacticToMapCoordinate(CurrentSystem.x, CurrentSystem.y);
+		var CurrentSystem = starData[i];
+
+
+		if(CurrentSystem.hasLocation) {
+
+			var GalacticCoordinatesTemp = revertCoordinates(CurrentSystem);
+			var CurrentLocation = galacticToMapCoordinate(GalacticCoordinatesTemp.x, GalacticCoordinatesTemp.y);
+
+		} else {
+
+			var CurrentLocation = galacticToMapCoordinate(CurrentSystem.x, CurrentSystem.y);
+
+
+		}
+
 
 
 
@@ -81,7 +95,7 @@ const generateStarMap = (starStatus, zoomLevel) => {
 
 		// starsArray.push(<StarSystem  x={CurrentLocation.x}  y={CurrentLocation.y}  name={CurrentSystem.name} xText={CurrentLocation.xText} yText={CurrentLocation.yText} />);
 
-		starMapGalaxyElement.appendChild(<StarSystem  x={CurrentLocation.x}  y={CurrentLocation.y}  name={CurrentSystem.name} xText={CurrentLocation.xText} yText={CurrentLocation.yText} zoomLevel={zoomLevel}/>);
+		starMapGalaxyElement.appendChild(<StarSystem  x={CurrentLocation.x}  y={CurrentLocation.y}  name={CurrentSystem.system} xText={CurrentLocation.xText} yText={CurrentLocation.yText} zoomLevel={zoomLevel}/>);
 
 
 
@@ -130,6 +144,21 @@ const generateStarMap = (starStatus, zoomLevel) => {
 //     return starMapElementText;
 // };
 
+
+
+function revertCoordinates(CurrentSystemTemp) {
+
+	var x = parseFloat(CurrentSystemTemp.xGalactic) / 125.0;
+	var y = parseFloat(CurrentSystemTemp.yGalactic) / 125.0;
+
+	var xNew = Math.round(x);
+	var yNew = Math.round(y);
+
+	return {
+		x: xNew,
+		y: yNew
+	};
+}
 
 
 

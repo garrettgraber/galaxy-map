@@ -10,11 +10,7 @@ class SystemData extends React.Component {
 
   wookiepeidiaLink(systemName) {
 
-    console.log("systemName: ", systemName);
-
     var url = 'http://starwars.wikia.com/wiki/' + systemName.replace(/ /g,"_");
-
-    console.log("url: ", url);
 
     return url;
     
@@ -22,48 +18,30 @@ class SystemData extends React.Component {
 
   wookiepeidiaLinkSystem(systemName) {
 
-    console.log("systemName: ", systemName);
-
     var url = 'http://starwars.wikia.com/wiki/' + systemName.replace(/ /g,"_") + '_system';
-
-    console.log("url: ", url);
 
     return url;
     
   }
 
   wookiepeidiaLinkSector(sectorArray) {
-
-    console.log("sectorArray: ", sectorArray);
-
     
     var sectorLinksArray = [];
 
     for(var i=0; i < sectorArray.length; i++) {
 
-      // var sectorLinkElement = ReactFauxDOM.createElement('a');
-
       var currentSecton = sectorArray[i];
 
       var url = 'http://starwars.wikia.com/wiki/' + currentSecton + "_sector";
 
-      // sectorLinkElement.attr("href", url)
-      //   .attr("target", "_blank")
-      //   .attr("innerHTML", currentSecton);
-
       sectorLinksArray.push(<a href={url} target={"_blank"}>{currentSecton}</a>);
 
-      console.log("currentSecton: ", currentSecton);
-
     }
-
 
     return sectorLinksArray;
   }
 
   wookiepeidiaLinkRegion(regionString) {
-
-    console.log("regionString: ", regionString);
 
     var url = 'http://starwars.wikia.com/wiki/' + regionString.replace(/ /g,"_") + "/Legends";
 
@@ -73,7 +51,7 @@ class SystemData extends React.Component {
 
   render() {
 
-    console.log("this.props system data: ", this.props);
+    // console.log("this.props system data: ", this.props);
 
     return (
       <div>

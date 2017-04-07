@@ -8,8 +8,8 @@ import App from './components/app.js';
 
 import { store } from './store.js';
 
-console.log("Provider: ", Provider);
-console.log("App: ", App);
+// console.log("Provider: ", Provider);
+// console.log("App: ", App);
 
 store.subscribe(() => {
   console.log("Application state: ", store.getState());

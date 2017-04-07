@@ -8,11 +8,16 @@ import { connect } from 'react-redux';
 class StarSystem extends React.Component {
   constructor() {
     super();
+    this.state = {
+    	hover: false
+    }
   }
 
   onMouseOver(e) {
 
     console.log("Mouse over star!");
+    this.setState({hover: true});
+
 
   }
 
@@ -26,6 +31,7 @@ class StarSystem extends React.Component {
   onMouseOut(e) {
 
   	console.log("Mouse out has happened!");
+  	this.setState({hover: false});
 
 
   }
@@ -39,14 +45,20 @@ class StarSystem extends React.Component {
 
   render() {
 
-  	console.log("props.starSystem: ", this.props);
+  	// console.log("props.starSystem: ", this.props);
 
   	// var CurrentLocation = galacticToMapCoordinate(this.props.x, this.props.y);
+
+  	if(this.state.hover) {
+  		var textStyle = {fontSize: textSize(this.props.zoomLevel), fill: "red"};
+  	} else {
+  		var textStyle = {display: "none", fontSize: textSize(this.props.zoomLevel), fill: "red"};
+  	}
 
     return (
     	<svg onClick={(e) => this.starClick(e)} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}  onMouseLeave={(e) => this.onMouseLeave(e)} >
     		<g>
-	    		<text x={this.props.xText} y={this.props.yText}  style={ {fontSize: textSize(this.props.zoomLevel), fill: "red"} }>{this.props.name}</text>
+	    		<text x={this.props.xText} y={this.props.yText}  style={textStyle}>{this.props.name}</text>
 	    		<circle style={ {fill: "red"} } r={starRadius(this.props.zoomLevel)} className={"star-circle"} cx={this.props.x}  cy={this.props.y} />
 	    	</g>
 	   	</svg>

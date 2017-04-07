@@ -14,7 +14,7 @@ class SystemDisplay extends React.Component {
 
   componentWillReceiveProps(newProps) {
  
-  	console.log("newProps systems: ", newProps);
+  	// console.log("newProps systems: ", newProps);
   	// generateSystemsDisplay(newProps.currentSystems);
 
   }
@@ -28,7 +28,7 @@ class SystemDisplay extends React.Component {
 
 
   render() {
-  	console.log("props.systems: ", this.props);
+  	// console.log("props.systems: ", this.props);
     var displayStyle = {display: (this.props.systems)? 'block' : 'none'};
 
     return (
@@ -61,7 +61,7 @@ function generateSystemsDisplay(systemArray) {
 
 	}
 
-  console.log("systemsArrayReactElements: ", systemsArrayReactElements);
+  // console.log("systemsArrayReactElements: ", systemsArrayReactElements);
 
   return systemsArrayReactElements;
 }

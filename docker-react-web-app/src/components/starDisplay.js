@@ -14,7 +14,7 @@ class StarDisplay extends React.Component {
 
   componentWillReceiveProps(newProps) {
  
-  	console.log("newProps systems: ", newProps);
+  	// console.log("newProps systems: ", newProps);
   	// generateSystemsDisplay(newProps.currentSystems);
 
   }
@@ -28,7 +28,7 @@ class StarDisplay extends React.Component {
 
 
   render() {
-  	console.log("props.star display: ", this.props);
+  	// console.log("props.star display: ", this.props);
     var displayStyle = {display: (this.props.starDisplay)? 'block' : 'none'};
 
     return (
@@ -62,7 +62,7 @@ function generateStarDisplay() {
 
 	}
 
-  console.log("starArrayReactElements: ", starArrayReactElements);
+  // console.log("starArrayReactElements: ", starArrayReactElements);
 
   return starArrayReactElements;
 }

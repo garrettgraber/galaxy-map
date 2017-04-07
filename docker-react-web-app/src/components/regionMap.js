@@ -9,7 +9,7 @@ class RegionMap extends React.Component {
   }
 
   render() {
-  	console.log("props.regions: ", this.props);
+  	// console.log("props.regions: ", this.props);
 
     return (
     	generateRegions(this.props.regions)
@@ -22,7 +22,7 @@ class RegionMap extends React.Component {
 
 function generateRegions(regionsStatus) {
 
-	var regionMapGalaxyElement = ReactFauxDOM.createElement('g');
+	var regionMapGalaxyElement = ReactFauxDOM.createElement('svg');
 
 
 	d3.select(regionMapGalaxyElement)

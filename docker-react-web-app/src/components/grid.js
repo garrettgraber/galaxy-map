@@ -5,8 +5,6 @@ import { Provider, connect } from 'react-redux';
 
 const generateGridCell = (populationOn, populatedCoordinates = []) => {
 
-	console.log("populatedCoordinates: ", populatedCoordinates);
-
 	var totalPopulatedCoordinates = 0;
 	var gridCells = [];
 	var foundCoordinates = [];
@@ -53,14 +51,11 @@ const generateGridCell = (populationOn, populatedCoordinates = []) => {
 
 			var currentGridLocation = currentColumnLabel + "-" + currentRow;
 
-
-
 			var populatedCoordinatesFound = $.grep(populatedCoordinates, function(n, i) {
 
 				return n.coordinates === currentGridLocation;
 
 			});
-
 
 			if(populatedCoordinatesFound.length > 0) {
 
@@ -74,8 +69,6 @@ const generateGridCell = (populationOn, populatedCoordinates = []) => {
 				var systemFoundInPopulated = false;
 
 			}
-
-
 
 			gridCells.push(<GridCell x={i} y={j} width={squareLength} height={squareLength} xText={xText} yText={yText} heightText={squareLength} widthText={squareLength + 8} text={currentRowValue}  coordinates={currentGridLocation} gridBorder={borderValue} population={populationOn}  totalSystems={0}/>)
 
@@ -92,17 +85,17 @@ const generateGridCell = (populationOn, populatedCoordinates = []) => {
 
 	}
 
-	console.log("gridCells: ", gridCells);
-	console.log("foundCoordinates: ", foundCoordinates);
-	console.log("populatedCoordinatesArray: ", populatedCoordinatesArray);
+	// console.log("gridCells: ", gridCells);
+	// console.log("foundCoordinates: ", foundCoordinates);
+	// console.log("populatedCoordinatesArray: ", populatedCoordinatesArray);
 
-	console.log("populatedCoordinates: ", populatedCoordinates);
+	// console.log("populatedCoordinates: ", populatedCoordinates);
 
 	var hiddenCoordinates = _.difference( populatedCoordinatesArray, foundCoordinates);
 
 	console.log("hiddenCoordinates: ", hiddenCoordinates);
 
-	console.log("totalPopulatedCoordinates: ", totalPopulatedCoordinates);
+	// console.log("totalPopulatedCoordinates: ", totalPopulatedCoordinates);
 
 	return gridCells;
 }
@@ -111,14 +104,13 @@ const generateGridCell = (populationOn, populatedCoordinates = []) => {
 class Grid extends React.Component {
   constructor(props) {
     super(props);
-    console.log("Grid props: ", props);
     this.state = {populatedCoordinates: []};
 
   }
 
   componentDidMount() {
 
-  	console.log("Grid componentDidMount: ", this);
+  	// console.log("Grid componentDidMount: ", this);
 
 	$.ajax({
 		url: "api/populated-areas",
@@ -126,7 +118,7 @@ class Grid extends React.Component {
 		cache: true,
 		success: function(data) {
 
-			console.log("data: ", data);		
+			// console.log("data: ", data);		
 		  this.setState({populatedCoordinates: data});
 
 	}.bind(this),
@@ -141,7 +133,7 @@ class Grid extends React.Component {
 
   render() {
 
-  	console.log("props.grid: ", this.props);
+  	// console.log("props.grid: ", this.props);
 
   	var gridStyle = {};
   	var gridOverallStyle = "map-area";
@@ -187,7 +179,7 @@ function getPopulatedAreas(cb) {
 
 	$.get("api/populated-areas", data => {
 
-		console.log("Number of populated Coordinate Zones: ", data.length);
+		// console.log("Number of populated Coordinate Zones: ", data.length);
 
 		cb(null, data);
 

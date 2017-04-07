@@ -5,41 +5,41 @@ import SearchData from './searchData.js';
 
 class NavBar extends React.Component {
 	toggleGrid() {
-    	console.log("grid clicked" );
-    	console.log("this.props: ", this.props);
+    	// console.log("grid clicked" );
+    	// console.log("this.props: ", this.props);
     	this.props.dispatch({ type: 'TOGGLE GRID' });    
     }
 
     toggleRegions() {
-    	console.log("regions clicked");
-    	console.log("this.props: ", this.props);
+    	// console.log("regions clicked");
+    	// console.log("this.props: ", this.props);
     	this.props.dispatch({ type: 'TOGGLE REGIONS' });    
 
     }
 
     toggleStars() {
-    	console.log("stars clicked");
-    	console.log("this.props: ", this.props);
+    	// console.log("stars clicked");
+    	// console.log("this.props: ", this.props);
     	this.props.dispatch({ type: 'TOGGLE STARS' });
     }
 
     toggleMap() {
-    	console.log("map clicked");
-    	console.log("this.props: ", this.props);
+    	// console.log("map clicked");
+    	// console.log("this.props: ", this.props);
     	this.props.dispatch({ type: 'TOGGLE MAP IMAGE' });
     }
 
     togglePopulation() {
 
-    	console.log("population clicked");
-    	console.log("this.props: ", this.props);
+    	// console.log("population clicked");
+    	// console.log("this.props: ", this.props);
     	this.props.dispatch({ type: 'TOGGLE POPULATION' });
 
     }
 
 	render() {
 
-        console.log("this.props in nav: ", this.props);
+        // console.log("this.props in nav: ", this.props);
         var populationStyle = {};
 
         if(!this.props.grid) {

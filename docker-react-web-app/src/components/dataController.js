@@ -36,7 +36,7 @@ class DataController extends React.Component {
 
   onMouseOver(e) {
 
-    console.log("\nMouse Over DATA");
+    // console.log("\nMouse Over DATA");
 
 
     this.setState({hover: true});
@@ -45,7 +45,7 @@ class DataController extends React.Component {
 
   onMouseOut(e) {
 
-        console.log("\nMouse Out DATA");
+        // console.log("\nMouse Out DATA");
 
 
     // console.log("\nMouse Out coordinates: ", this.props.coordinates)
@@ -56,7 +56,7 @@ class DataController extends React.Component {
 
   onMouseEnter(e) {
 
-        console.log("\nMouse Enter DATA");
+        // console.log("\nMouse Enter DATA");
 
 
     this.setState({hover: true});
@@ -67,13 +67,13 @@ class DataController extends React.Component {
 
   onMouseLeave(e) {
 
-    console.log("\nMouse Leave DATA");
+    // console.log("\nMouse Leave DATA");
     this.setState({hover: false});
   }
 
   dataClick(e) {
 
-  	console.log("data clicked: ", e);
+  	// console.log("data clicked: ", e);
 
     this.props.dispatch({ type: 'SYSTEMS_TOGGLE'});
 
@@ -83,7 +83,7 @@ class DataController extends React.Component {
 
   starMapClick(e) {
 
-    console.log("Star map Clicked!");
+    // console.log("Star map Clicked!");
   }
 
   render() {

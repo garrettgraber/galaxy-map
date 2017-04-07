@@ -116,26 +116,26 @@ class GridCell extends React.Component {
 
   gridClick() {
 
-    console.log("Grid clicked coordinates: ", this.props.coordinates);
+    // console.log("Grid clicked coordinates: ", this.props.coordinates);
 
     getCoordinateData(this.props.coordinates, (error, result) => {
 
       if(result.length > 0) {
 
-        console.log("this: ", this);
+        // console.log("this: ", this);
 
         var dispatchBS = displaySystems(result);
 
         console.log("dispatchBS: ", dispatchBS);
 
-        console.log("result: ", result);
+        // console.log("result: ", result);
 
 
         this.props.dispatch({ type: 'SYSTEMS_ON'});
         this.props.dispatch({ type: 'DISPLAY_SYSTEMS', payload: result });
-        this.props.dispatch({ type: 'STARS_DISPLAY_ON'});
+        // this.props.dispatch({ type: 'STARS_DISPLAY_ON'});
 
-        console.log("this.props: ", this.props);
+        // console.log("this.props: ", this.props);
 
         // $.each(result, function(i, n) {
 
@@ -144,7 +144,7 @@ class GridCell extends React.Component {
 
         // });
 
-        console.log("number of planets: ", result.length);
+        // console.log("number of planets: ", result.length);
 
       }
 
@@ -162,7 +162,7 @@ class GridCell extends React.Component {
 
     this.setState({hover: true});
 
-    console.log("\nMouse Over coordinates: ", this.props.coordinates);
+    // console.log("\nMouse Over coordinates: ", this.props.coordinates);
 
 
   }
@@ -180,7 +180,7 @@ class GridCell extends React.Component {
     this.setState({hover: true});
 
 
-    console.log("\nMouse Enter coordinates: ", this.props.coordinates);
+    // console.log("\nMouse Enter coordinates: ", this.props.coordinates);
   }
 
   onMouseLeave(e) {
@@ -264,7 +264,7 @@ function getPopulatedAreas(cb) {
 
   $.get("api/populated-areas", data => {
 
-    console.log("Number of populated Coordinate Zones: ", data.length);
+    // console.log("Number of populated Coordinate Zones: ", data.length);
     cb(null, data);
 
   });

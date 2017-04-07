@@ -11,12 +11,12 @@ class MapImage extends React.Component {
   }
 
   render() {
-  	  	console.log("props.map: ", this.props);
+  	  	// console.log("props.map: ", this.props);
 
     return (
-    	<g className={this.props.map ? 'map-area' : 'map-area + hidden'}>
+    	<svg className={this.props.map ? 'map-area' : 'map-area + hidden'}>
     		<image className='map-image' height={1200} width={1200} xlinkHref={galaxy} alt={"galaxy"} />
-    	</g>
+    	</svg>
     );
   }
 }
