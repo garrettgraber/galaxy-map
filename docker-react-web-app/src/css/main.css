@@ -1,74 +1,76 @@
 
 
-.hidden { display:none; }
-
-.navbar-button {
-  margin: 3px;
+.hidden { 
+    display:none;
 }
 
-.star-circle {
-  fill: "red";
+.navbar-button {
+    margin: 3px;
+}
+
+.starCircle {
+    fill: "red";
 }
 
 .star-circle:hover {
-  fill: "aliceblue";
+    fill: "aliceblue";
 }
 
 .map-area {
-  position: absolute;
-  top: 32px;
-  left: 0px;
-  height: 1200px;
-  width: 1200px;
+    position: absolute;
+    transform: scale(1.0);
+    left: 0px;
+    height: 1200px;
+    width: 1200px;
 }
 
 .map-fill-area {
-  height: 1200px;
-  width: 0;
-  opacity: 0.6;
+    height: 1200px;
+    width: 0;
+    opacity: 0.6;
 }
 
 .map-image {
-  height: 1200px;
-  width: 1200px;
-  background-color: black;
-  opacity: 0.75;
+    height: 1200px;
+    width: 1200px;
+    background-color: black;
+    opacity: 0.75;
 }
 
 .selected-coordinate {
-  margin-left: 8px;
-  border: 2px solid white;
-  height: 350px;
-  width: auto;
-  padding: 8px;
-  margin-right: 8px;
-  margin-top: 8px;
-  border-radius: 5px;
+    margin-left: 8px;
+    border: 2px solid white;
+    height: 350px;
+    width: auto;
+    padding: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    border-radius: 5px;
 }
 
 .selected-coordinate-display {
-  background-color: black;
-  position: relative;
-  float: right;
-  height: 300px;
-  width: 300px;
+    background-color: black;
+    position: relative;
+    float: right;
+    height: 300px;
+    width: 300px;
 }
 
 .grid-container {
-  height: 1200px;
-  width: 1200px;
+    height: 1200px;
+    width: 1200px;
 }
 
 .grid-text {
-  fill: #49fb35;
-  /*opacity: 0.0;*/
+    fill: #49fb35;
+    /*opacity: 0.0;*/
 }
 
 .grid-rectangle {
-  fill: none;
-  stroke: #49fb35;
-  opacity: 0.1;
-  stroke-width: 1;
+    fill: none;
+    stroke: #49fb35;
+    opacity: 0.1;
+    stroke-width: 1;
 }
 
 .grid-text-mouseover {
@@ -76,91 +78,128 @@
 }
 
 .grid-rectangle-mouseover {
-  /*fill-opacity: 1.0;*/
-  opacity: 0.5;
-  stroke-width: 5;
-  /*stroke: #FF851B;*/
-  stroke: teal;
+    /*fill-opacity: 1.0;*/
+    opacity: 0.5;
+    stroke-width: 5;
+    /*stroke: #FF851B;*/
+    stroke: teal;
+}
+
+.image-control-pane {
+    width: 100px;
+    height: 1200px;
+    position: fixed;
+    background-color: black;
+    right: 0;
+    position: fixed;
+    z-index: 2;
+    top: 100px;
+}
+
+.image-control-pane-right {
+    width: 136px;
+    height: 1200px;
+    position: fixed;
+    background-color: black;
+    right: 0px;
+}
+
+.navSection {
+    height: 50px;
 }
 
 
 
 #nav-container {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  height: 100px;
-  width: 100%;
-  z-index: 3;
-  padding: 5px;
-  background-color: black;
-  border: 1px solid #49fb35;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100px;
+    width: 100%;
+    z-index: 3;
+    padding: 5px;
+    background-color: black;
+    border: 1px solid #49fb35;
 }
 
 #map-container {
-  z-index: 1;
+    z-index: 1;
+    top: 100px;
+    background-color: black;
+    position: absolute;
+    left: -65px;
+    height: 1200px;
+    width: 1200px;
 }
 
-#image-container {
-  height: 1200px;
-  width: 1200px;
-  background-color: black;
+#imageContainer {
+    height: 1200px;
+    width: 1200px;
+    background-color: black;
 }
 
-#image-hider {
-  height: 1200px;
-  width: 1200px;
-}
-
-.image-hider-pane {
-  width: 70px;
-  height: 1200px;
-  position: fixed;
-  background-color: black;
-}
-
-.image-hider-pane-right {
-  width: 180px;
-  height: 1200px;
-  position: fixed;
-  background-color: black;
-  right: 0px;
+#image-control {
+    height: 1200px;
+    width: 1200px;
+    right: 0;
 }
 
 #planet-data-container {
-  display:none;
-  background-color: orange;
-  opacity: 0.0;
-  height: auto;
-  padding: 10px;
-  position: fixed;
-  margin-left: 6px;
-  margin-top: 6px;
-  border: 2px solid teal;
-  border-radius: 10px;
-  width: 70%;
+    display:none;
+    background-color: orange;
+    opacity: 0.0;
+    height: auto;
+    padding: 10px;
+    position: fixed;
+    margin-left: 6px;
+    margin-top: 6px;
+    border: 2px solid teal;
+    border-radius: 10px;
+    width: 70%;
 }
 
+
+
 #close-coordinate-display {
-  position: relative;
-  float: right;
-  border-radius: 25px;
+    position: relative;
+    float: right;
+    border-radius: 25px;
 }
 
 #planet-data {
-  display: none;
-  top: 90px;
-  left: 0;
-  background-color: black;
-  opacity: 1.0;
-  height: 200px;
-  /*padding: 5px;*/
-  position: fixed;
-  margin-left: 6px;
-  margin-top: 20px;
-  margin-bottom: 6px;
-  border: 2px solid white;
-  /*border-radius: 10px;*/
-  width: 400px;
-  overflow-y: scroll;
+    display: none;
+    top: 90px;
+    left: 50px;
+    background-color: black;
+    opacity: 1.0;
+    height: 520px;
+    /*padding: 5px;*/
+    position: fixed;
+    margin-left: 6px;
+    margin-top: 20px;
+    margin-bottom: 6px;
+    border: 2px solid white;
+    /*border-radius: 10px;*/
+    width: 300px;
+    overflow-y: scroll;
+}
+
+#star-display {
+    display: none;
+    top: 90px;
+    left: 380px;
+    background-color: black;
+    opacity: 1.0;
+    height: 520px;
+    width: 620px;
+    /*padding: 5px;*/
+    position: fixed;
+    margin-left: 6px;
+    margin-top: 20px;
+    margin-bottom: 6px;
+    border: 2px solid white;
+    /*border-radius: 10px;*/
+    /*overflow-y: scroll;*/
+
+
 }

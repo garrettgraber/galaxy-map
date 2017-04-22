@@ -16,6 +16,11 @@ import galaxy from '../images/galaxy-image.jpg';
 
 import MapBase from './mapBase.js';
 
+import styles from '../css/main.css';
+
+
+console.log("styles: ", styles.mapImage);
+
 
 
 // require("css-loader!../css/main.css")

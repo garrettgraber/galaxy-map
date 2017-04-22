@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SearchData from './searchData.js';
 
+import styles from '../css/main.css'
+
 
 class NavBar extends React.Component {
 	toggleGrid() {

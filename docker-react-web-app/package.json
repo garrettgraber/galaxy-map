@@ -30,8 +30,10 @@
     "babel-register": "^6.3.13",
     "body-parser": "^1.16.0",
     "cors": "^2.8.1",
+    "css-loader": "^0.26.4",
     "docker-links": "^1.0.2",
     "express": "^4.14.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "ip": "^1.1.4",
     "leaflet": "^1.0.3",
     "moment-timezone": "^0.5.11",
@@ -48,6 +50,7 @@
     "redux": "^3.6.0",
     "redux-standard-actions": "^1.0.1",
     "redux-thunk": "^2.1.0",
-    "reselect": "^2.5.1"
+    "reselect": "^2.5.1",
+    "style-loader": "^0.13.2"
   }
 }

@@ -30,6 +30,8 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 var javascriptEntryPath = path.resolve(__dirname, 'src', 'index.js');
 var htmlEntryPath = path.resolve(__dirname, 'src', 'index.html');
@@ -39,7 +41,8 @@ module.exports = {
   entry: [
     'webpack-hot-middleware/client?reload=true', 
     javascriptEntryPath,
-    htmlEntryPath
+    htmlEntryPath,
+    "./src"
   ],
   output: {
     publicPath: "/",
@@ -57,10 +60,14 @@ module.exports = {
       loader: 'file?name=[name].[ext]',
     },
     {
-      //IMAGE LOADER
-      test: /\.(jpe?g|png|gif|svg)$/i,
-      loader:'file'
+      test: /\.css$/,
+      loader: "style-loader!css-loader"
     },
+    // {
+    //   //IMAGE LOADER
+    //   test: /\.(jpe?g|png|gif|svg)$/i,
+    //   loader:'file'
+    // },
     // {
     //   test: /\.css$/,
     //   loader: 'style-loader'
@@ -74,18 +81,33 @@ module.exports = {
     //   }
     // }
     // {
-    //   test: /\.(jpg|png)$/,
-    //   // loader: 'file-loader',
-    //   loader: 'file-loader?name=/images/[name].[ext]'
-    //   // options: {
-    //   //   name: './images/[name].[ext]',
-    //   // }
+    //   test: /\.css/,
+    //   loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'),
+    //   include: [
+    //       path.resolve(__dirname, "src/css")
+    //   ]
     // },
+    // {
+    //     test: /\.css$/,
+    //     loader: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader"}),
+    //     include: [
+    //       path.resolve(__dirname, "src/css")
+    //     ]
+    // },
+    {
+      test: /\.(jpg|png)$/,
+      loader: 'file-loader',
+      // loader: 'file-loader?name=[path][name].[ext]'
+      options: {
+        name: './images/[name].[ext]',
+      }
+    },
 ], 
   },
   plugins: [ 
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
+    // new ExtractTextPlugin("main.css", {allChunks: true})
   ]
 }

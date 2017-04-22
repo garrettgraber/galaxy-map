@@ -5,6 +5,8 @@ import ReactFauxDOM from 'react-faux-dom';
 import {coordinateArray} from '../data/stellarCoordinates.js'
 import { connect } from 'react-redux';
 
+import styles from '../css/main.css'
+
 class StarSystem extends React.Component {
   constructor() {
     super();
@@ -59,7 +61,7 @@ class StarSystem extends React.Component {
     	<svg onClick={(e) => this.starClick(e)} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}  onMouseLeave={(e) => this.onMouseLeave(e)} >
     		<g>
 	    		<text x={this.props.xText} y={this.props.yText}  style={textStyle}>{this.props.name}</text>
-	    		<circle style={ {fill: "red"} } r={starRadius(this.props.zoomLevel)} className={"star-circle"} cx={this.props.x}  cy={this.props.y} />
+	    		<circle style={ {fill: "red"} } r={starRadius(this.props.zoomLevel)} className={styles.starCircle} cx={this.props.x}  cy={this.props.y} />
 	    	</g>
 	   	</svg>
     );
